@@ -1,0 +1,247 @@
+/* 
+Verde: #a8ce3b 
+Azul oscuro: #1c2256
+Azul clarito: #1997bd
+*/
+body {
+  background-image: url(../css/images/IMG_0419.JPG);
+  background-size: cover; /* La imagen cubrirá todo el fondo */
+  background-position: center; /* Centra la imagen */
+  height: 100vh; /* Asegúrate de que el body ocupe toda la pantalla */
+  margin: 0; /* Elimina márgenes */
+  font-family: "Asap", sans-serif;
+  background-image: -o-linear-gradient();
+}
+
+h1 {
+  color: aliceblue;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#login {
+  background-color: #1c2256;
+  background-image: url(./images/lor.png);
+  background-size: 80%;
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-origin: content-box;
+  padding-right: 20px;
+}
+
+.login {
+  z-index: 1;
+  overflow: hidden;
+  background-color: rgb(253 253 253 / 90%);
+  padding: 50px 30px 30px 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 450px;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  /* -webkit-transition: -webkit-transform 300ms, box-shadow 300ms;
+  -moz-transition: -moz-transform 300ms, box-shadow 300ms;
+  transition: transform 300ms, box-shadow 300ms; */
+  box-shadow: 15px 10px 10px rgba(243, 246, 247, 0.2);
+  -webkit-box-shadow: -4px 5px 62px -12px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -4px 5px 62px -12px rgba(235, 85, 16, 0.993);
+  box-shadow: -4px 5px 62px -12px rgba(0, 0, 0, 0.993);
+}
+.login::before,
+.login::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-top-left-radius: 40%;
+  border-top-right-radius: 45%;
+  border-bottom-left-radius: 35%;
+  border-bottom-right-radius: 40%;
+  z-index: -1;
+}
+.login::before {
+  left: 70%;
+  bottom: -130%;
+  background-color: #2197be;
+  /* -webkit-animation: wawes 6s infinite linear; */
+  /* -moz-animation: wawes 6s infinite linear; */
+  animation: wawes 6s infinite linear;
+}
+.login::after {
+  left: 95%;
+  bottom: -125%;
+  background-color: #a8ce3b;
+  -webkit-animation: wawes 7s infinite;
+  -moz-animation: wawes 7s infinite;
+  animation: wawes 7s infinite;
+}
+.login > input {
+  font-family: "Asap", sans-serif;
+  display: block;
+  border-radius: 5px;
+  font-size: 16px;
+  background: white;
+  width: 45%;
+  border: 0;
+  padding: 10px 10px;
+  margin: 15px -10px;
+}
+/* .login > button {
+  font-family: "Asap", sans-serif;
+  cursor: pointer;
+  color: #fff;
+  font-size: 12px;
+  text-transform: uppercase;
+  width: 120px;
+  border: 0;
+  padding: 10px 0;
+  margin-top: 10px;
+  margin-left: -5px;
+  border-radius: 5px;
+  background-color: #2197be;
+  -webkit-transition: background-color 300ms;
+  -moz-transition: background-color 300ms;
+  transition: background-color 300ms;
+} */
+/* .login > button:hover {
+  background-color: #83f243;
+} */
+
+/* @-webkit-keyframes wawes {
+  from {
+    -webkit-transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes wawes {
+  from {
+    -moz-transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+} */
+@keyframes wawes {
+  from {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -o-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 12px;
+}
+
+/* From Uiverse.io by mobinkakei */
+
+svg {
+  width: 50px;
+  height: "20px";
+}
+
+.cta {
+  /* display: flex; */
+  padding: 2px 8px 5px;
+  text-decoration: none;
+  font-size: 13px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  background: #1997bd;
+  transition: 1s;
+  box-shadow: 6px 6px 0 black;
+  transform: skewX(-15deg);
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  transition: 0.1s;
+  box-shadow: 10px 10px 0 #a8ce3b;
+}
+
+.cta .second {
+  transition: 0.1s;
+  margin-right: 0px;
+}
+
+.cta:hover .second {
+  transition: 0.1s;
+  margin-right: 45px;
+}
+
+.span {
+  transform: skewX(15deg);
+}
+
+.second {
+  /* width: 20px; */
+  margin-left: 30px;
+  position: relative;
+  top: 12%;
+}
+
+.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover .three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover .one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover .two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+
+  50% {
+    fill: #a8ce3b;
+  }
+
+  100% {
+    fill: white;
+  }
+}
