@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2024 a las 00:34:02
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 09-10-2024 a las 15:32:37
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,16 +48,19 @@ INSERT INTO `tbl_areatrabajo` (`IdArea`, `Descripcion`) VALUES
 CREATE TABLE `tbl_det_incapacidadper` (
   `id` int(11) NOT NULL,
   `Cedula` varchar(15) NOT NULL,
+  `Fechacontrato` date NOT NULL,
   `Ibc` int(11) NOT NULL,
   `Codigodiagnostico` varchar(10) NOT NULL,
-  `Tipotransito` varchar(2) NOT NULL,
-  `Inicialprorroga` varchar(15) NOT NULL,
+  `Inicialprorroga` int(11) NOT NULL,
   `Tipoincapacidad` int(11) NOT NULL,
   `Fechainicio` date NOT NULL,
   `Fechafinal` date NOT NULL,
-  `Dias` int(11) NOT NULL,
+  `Totaldias` int(11) NOT NULL,
+  `Diascobrar` int(11) NOT NULL,
+  `Valorpagado` int(11) NOT NULL,
   `Observaciones` varchar(100) NOT NULL,
-  `Archivo` varchar(50) NOT NULL
+  `Archivo` varchar(50) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -113,12 +116,38 @@ INSERT INTO `tbl_eps` (`IdEps`, `Descripcion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_incapacidades_pagas`
+--
+
+CREATE TABLE `tbl_incapacidades_pagas` (
+  `Id` int(11) NOT NULL,
+  `Cedula` varchar(15) NOT NULL,
+  `Fechacontrato` date NOT NULL,
+  `Ibc` int(11) NOT NULL,
+  `Codigodiagnostico` varchar(10) NOT NULL,
+  `Inicialprorroga` int(11) NOT NULL,
+  `Tipoincapacidad` int(11) NOT NULL,
+  `Fechainicio` date NOT NULL,
+  `Fechafinal` date NOT NULL,
+  `Totaldias` int(11) NOT NULL,
+  `Diascobrar` int(11) NOT NULL,
+  `Valorpagado` int(11) NOT NULL,
+  `Valordevuelto` int(11) NOT NULL,
+  `Observaciones` varchar(50) NOT NULL,
+  `Archivo` varchar(50) NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_personas`
 --
 
 CREATE TABLE `tbl_personas` (
   `Cedula` varchar(15) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
+  `Estado` int(11) NOT NULL,
   `Eps` int(11) NOT NULL,
   `Empresa` int(11) NOT NULL,
   `Areatrabajo` int(11) NOT NULL,
@@ -141,8 +170,8 @@ CREATE TABLE `tbl_prorroga` (
 --
 
 INSERT INTO `tbl_prorroga` (`Idprorroga`, `Descripcion`) VALUES
-(1, 'SI'),
-(2, 'NO');
+(1, 'Inicial'),
+(2, 'Prorroga');
 
 -- --------------------------------------------------------
 
@@ -186,9 +215,10 @@ CREATE TABLE `tbl_tipo` (
 
 INSERT INTO `tbl_tipo` (`IdTipo`, `Descripcion`) VALUES
 (1, 'EG'),
-(2, 'AT'),
-(3, 'LM'),
-(4, 'LP');
+(2, 'EG-T'),
+(3, 'AT'),
+(4, 'LM'),
+(5, 'LP');
 
 -- --------------------------------------------------------
 
@@ -209,7 +239,6 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`Cedula`, `Nombre`, `Sucursal`, `Usuario`, `Contrasena`) VALUES
-('123', 'admin', 24, 'admin', '123'),
 ('1234', 'paola', 1, 'yessy', '$2y$10$2svriwHMKSIilR/xm0srYeidrcZXXN3d3lzGu3kJymolym1GGcvQK');
 
 --
@@ -227,7 +256,9 @@ ALTER TABLE `tbl_areatrabajo`
 --
 ALTER TABLE `tbl_det_incapacidadper`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `Tipoincapacidad` (`Tipoincapacidad`);
+  ADD KEY `Tipoincapacidad` (`Tipoincapacidad`),
+  ADD KEY `Cedula` (`Cedula`),
+  ADD KEY `Inicialprorroga` (`Inicialprorroga`);
 
 --
 -- Indices de la tabla `tbl_empresa`
@@ -242,10 +273,19 @@ ALTER TABLE `tbl_eps`
   ADD PRIMARY KEY (`IdEps`);
 
 --
+-- Indices de la tabla `tbl_incapacidades_pagas`
+--
+ALTER TABLE `tbl_incapacidades_pagas`
+  ADD PRIMARY KEY (`Id`),
+  ADD KEY `Tipoincapacidad` (`Tipoincapacidad`),
+  ADD KEY `tbl_incapacidades_pagas_ibfk_1` (`Cedula`),
+  ADD KEY `Inicialprorroga` (`Inicialprorroga`);
+
+--
 -- Indices de la tabla `tbl_personas`
 --
 ALTER TABLE `tbl_personas`
-  ADD PRIMARY KEY (`Cedula`),
+  ADD PRIMARY KEY (`Cedula`,`Fechacontrato`),
   ADD KEY `Empresa` (`Empresa`),
   ADD KEY `Eps` (`Eps`),
   ADD KEY `Areatrabajo` (`Areatrabajo`);
@@ -288,7 +328,7 @@ ALTER TABLE `tbl_areatrabajo`
 -- AUTO_INCREMENT de la tabla `tbl_det_incapacidadper`
 --
 ALTER TABLE `tbl_det_incapacidadper`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_empresa`
@@ -303,6 +343,12 @@ ALTER TABLE `tbl_eps`
   MODIFY `IdEps` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT de la tabla `tbl_incapacidades_pagas`
+--
+ALTER TABLE `tbl_incapacidades_pagas`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de la tabla `tbl_prorroga`
 --
 ALTER TABLE `tbl_prorroga`
@@ -312,7 +358,7 @@ ALTER TABLE `tbl_prorroga`
 -- AUTO_INCREMENT de la tabla `tbl_tipo`
 --
 ALTER TABLE `tbl_tipo`
-  MODIFY `IdTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `IdTipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
@@ -323,7 +369,17 @@ ALTER TABLE `tbl_tipo`
 --
 ALTER TABLE `tbl_det_incapacidadper`
   ADD CONSTRAINT `tbl_det_incapacidadper_ibfk_1` FOREIGN KEY (`Tipoincapacidad`) REFERENCES `tbl_tipo` (`IdTipo`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tbl_det_incapacidadper_ibfk_2` FOREIGN KEY (`Tipoincapacidad`) REFERENCES `tbl_tipo` (`IdTipo`);
+  ADD CONSTRAINT `tbl_det_incapacidadper_ibfk_2` FOREIGN KEY (`Tipoincapacidad`) REFERENCES `tbl_tipo` (`IdTipo`),
+  ADD CONSTRAINT `tbl_det_incapacidadper_ibfk_3` FOREIGN KEY (`Cedula`) REFERENCES `tbl_personas` (`Cedula`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_det_incapacidadper_ibfk_4` FOREIGN KEY (`Inicialprorroga`) REFERENCES `tbl_prorroga` (`Idprorroga`);
+
+--
+-- Filtros para la tabla `tbl_incapacidades_pagas`
+--
+ALTER TABLE `tbl_incapacidades_pagas`
+  ADD CONSTRAINT `tbl_incapacidades_pagas_ibfk_1` FOREIGN KEY (`Cedula`) REFERENCES `tbl_personas` (`Cedula`) ON DELETE CASCADE,
+  ADD CONSTRAINT `tbl_incapacidades_pagas_ibfk_2` FOREIGN KEY (`Tipoincapacidad`) REFERENCES `tbl_tipo` (`IdTipo`),
+  ADD CONSTRAINT `tbl_incapacidades_pagas_ibfk_3` FOREIGN KEY (`Inicialprorroga`) REFERENCES `tbl_prorroga` (`Idprorroga`);
 
 --
 -- Filtros para la tabla `tbl_personas`
