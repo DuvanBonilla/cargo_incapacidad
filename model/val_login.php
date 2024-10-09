@@ -19,7 +19,7 @@ class Usuario
 
         if ($validar_login->num_rows > 0) {
             $usuarioBD = $validar_login->fetch_assoc();
-            $hashContraseñaBD = $usuarioBD['Password'];
+            $hashContraseñaBD = $usuarioBD['Contrasena'];
             $sucursal = $usuarioBD['Sucursal'];
             $cedula = $usuarioBD['Cedula'];
             if (password_verify($this->contrasena, $hashContraseñaBD)) {

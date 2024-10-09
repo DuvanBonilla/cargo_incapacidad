@@ -1,0 +1,19 @@
+{
+    "name": "cargo/incapacidades",
+    "type": "project",
+    "require": {
+        "phpoffice/phpspreadsheet": "^3.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Cargo\\Incapacidades\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "DuvanBonilla",
+            "email": "costos@cargoban.com.co"
+        }
+    ]
+}

@@ -1,0 +1,182 @@
+/* Mejorando la responsividad para dispositivos más pequeños */
+@media (max-width: 1024px) {
+    .container .heading {
+        font-size: 40px;
+        padding-bottom: 50px;
+    }
+    
+    .container .box-container .box {
+        padding: 25px 15px;
+    }
+    
+    .container .box-container .box h3 {
+        font-size: 20px;
+    }
+    
+    .container .box-container .box p {
+        font-size: 14px;
+    }
+    
+    .container .box-container .box .btn {
+        font-size: 16px;
+        padding: 7px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .container .heading {
+        font-size: 35px;
+        padding-bottom: 40px;
+    }
+
+    .container .box-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .container .box-container .box {
+        padding: 20px 10px;
+    }
+    
+    .container .box-container .box h3 {
+        font-size: 18px;
+    }
+
+    .container .box-container .box p {
+        font-size: 13px;
+    }
+
+    .container .box-container .box .btn {
+        font-size: 15px;
+        padding: 6px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container .heading {
+        font-size: 28px;
+        padding-bottom: 30px;
+    }
+    
+    .container .box-container .box {
+        padding: 15px 5px;
+    }
+
+    .container .box-container .box h3 {
+        font-size: 16px;
+    }
+
+    .container .box-container .box p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .container .box-container .box .btn {
+        font-size: 14px;
+        padding: 5px 15px;
+    }
+}
+/* General styles for the form */
+form {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid #1c2256; /* Azul oscuro */
+}
+
+form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #1c2256; /* Azul oscuro */
+    text-align: center;
+    border-bottom: 2px solid #a8ce3b; /* Verde */
+    padding-bottom: 10px;
+}
+
+form label {
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: block;
+    color: #1c2256; /* Azul oscuro */
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form input[type="file"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+    color: #1c2256; /* Azul oscuro */
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="date"]:focus,
+form input[type="file"]:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #1997bd; /* Azul clarito */
+    outline: none;
+}
+
+form textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+form input[type="file"] {
+    padding: 8px;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1997bd; /* Azul clarito */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #1c2256; /* Azul oscuro */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+    }
+
+    form h2 {
+        font-size: 22px;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="date"],
+    form input[type="file"],
+    form select,
+    form textarea {
+        font-size: 15px;
+    }
+
+    form button {
+        font-size: 16px;
+    }
+}
