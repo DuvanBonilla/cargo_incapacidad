@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php';
+include_once 'conexion.php';
 
 class Personas
 {
@@ -28,6 +28,7 @@ class Personas
                 tbl_empresa emp ON p.Empresa = emp.IdEmpresa
             INNER JOIN 
                 tbl_areatrabajo at ON p.Areatrabajo = at.IdArea
+            ORDER BY p.Fechacontrato DESC
             ";
 
         $resultado = mysqli_query($this->conexion, $consulta);
