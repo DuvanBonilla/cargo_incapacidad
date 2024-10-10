@@ -9,7 +9,7 @@ class UsuarioEIncapacidad
     {
         $this->conexion = $conexion;
     }
-    
+
     public function ExistPersona($cedula, $conexion)
     {
         $stmt = $conexion->prepare('SELECT * FROM tbl_personas WHERE Cedula = ?');
@@ -27,11 +27,11 @@ class UsuarioEIncapacidad
 
     public function AggIncapacidad($cedula, $nombre, $eps, $empresa, $area, $fechaContrato, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $Totaldias, $observaciones, $archivo)
     {
-        if (!empty($cedula) && !empty($nombre) && !empty($eps) && !empty($empresa)  && !empty($area) && !empty($fechaContrato) && !empty($ibc) && !empty($diagnostico) && !empty($inipro) && !empty($tipoinc) && !empty($fechaInicio) && !empty($Totaldias) && !empty($observaciones) && !empty($archivo)) {
+        if (!empty($cedula) && !empty($nombre) && !empty($eps) && !empty($empresa) && !empty($area) && !empty($fechaContrato) && !empty($ibc) && !empty($diagnostico) && !empty($inipro) && !empty($tipoinc) && !empty($fechaInicio) && !empty($Totaldias) && !empty($observaciones) && !empty($archivo)) {
 
             /*Convertir a Integer los valores tipo select*/
-            $inipro = (int)$inipro;
-            $tipoinc = (int)$tipoinc;
+            $inipro = (int) $inipro;
+            $tipoinc = (int) $tipoinc;
             // Prepara la consulta SQL con la fecha final calculada usando DATE_ADD
             $porcentaje = 100 * 0.66666; /*66,666% */
             $valordia = $ibc / 30;
@@ -50,8 +50,8 @@ class UsuarioEIncapacidad
                         $stmt = $this->conexion->prepare("INSERT INTO tbl_incapacidades_pagas(Cedula, Ibc, Codigodiagnostico, Inicialprorroga, Tipoincapacidad, Fechainicio, Fechafinal, Totaldias, Diascobrar, Valorpagado, Valordevuelto, Observaciones, Archivo) 
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)");
                         $stmt->bind_param("sisiissiiiiss", $cedula, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $fechafinal, $Totaldias, $diasCobrar, $Valorpagado, $Valordevuelto, $observaciones, $archivo);
-                       $stmt->execute();
-                    exit();
+                        $stmt->execute();
+                        exit();
                     } else {
                         echo "<script>console.log('más de 2 días');</script>";
                         $diasIncapacidad = $Totaldias - 2;
@@ -67,11 +67,11 @@ class UsuarioEIncapacidad
                         $stmt->execute();
                         exit();
                     }
-                } 
+                }
 
-    //         }
-    //     }
-    // }
+                //         }
+                //     }
+                // }
                 elseif ($tipoinc == 3) {/*Sí es de tipo AT */
                     if ($Totaldias == 1) {
                         echo "<script>console.log('es más de 2 días');</script>";
@@ -175,26 +175,28 @@ class UsuarioEIncapacidad
 
     public function AggPersona($cedula, $nombre, $eps, $empresa, $area, $fechaContrato)
     {
-            $stmt = $this->conexion->prepare("INSERT INTO tbl_personas(Cedula, Nombre, Eps, Empresa, Areatrabajo, Fechacontrato) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("ssiiis", $cedula, $nombre, $eps, $empresa, $area, $fechaContrato);
-            // return $stmt->execute();
-          
-            if ($stmt->execute()) {
-                return $this; // O un objeto adecuado
-            } else {
-                return false; // Esto debe cambiar
-            }
-    //    if ($stmt->execute()) {
-    //             $this->mostrarMensaje('success', 'Persona e incapacidad registrada');
+        $estadoActivo = 1;
+        $stmt = $this->conexion->prepare("INSERT INTO tbl_personas(Cedula, Nombre, Estado, Eps, Empresa, Areatrabajo, Fechacontrato) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssiiiis", $cedula, $nombre, $estadoActivo, $eps, $empresa, $area, $fechaContrato);
+        // return $stmt->execute();
 
-    //         } else {
-    //             $this->mostrarMensaje('error', 'Diligencie todos los campos');
+        if ($stmt->execute()) {
+            return $this; // O un objeto adecuado
+        } else {
+            return false; // Esto debe cambiar
+        }
+        //    if ($stmt->execute()) {
+        //             $this->mostrarMensaje('success', 'Persona e incapacidad registrada');
 
-    //         }
-   } 
-     
+        //         } else {
+        //             $this->mostrarMensaje('error', 'Diligencie todos los campos');
 
-    public function mostrarMensaje($tipo, $titulo){
+        //         }
+    }
+
+
+    public function mostrarMensaje($tipo, $titulo)
+    {
         echo "
         <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>
         <script language='JavaScript'>
