@@ -1,3 +1,7 @@
+<?php
+$persona = include '../model/consu_personas.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es-MX">
 
@@ -26,51 +30,52 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="Cedula" class="form-label">Cédula</label>
-                                        <input type="text" id="Cedula" name="Cedula" class="form-control1" required
-                                            readonly>
+                                        <input type="text" id="Cedula" name="Cedula" class="form-control1"
+                                            placeholder="Cédula" required readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="Nombre" class="form-label">Nombre</label>
-                                        <input type="text" id="Nombre" name="Nombre" class="form-control1" required>
+                                        <input type="text" id="Nombre" name="Nombre" class="form-control1"
+                                            placeholder="Nombre" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="Eps" class="form-label">EPS</label>
-                                        <input type="text" id="Eps" name="Eps" class="form-control1" required>
+                                        <select id="Eps" name="Eps" class="form-control1" required></select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="Empresa" class="form-label">Empresa</label>
-                                        <input type="text" id="Empresa" name="Empresa" class="form-control1" required>
+                                        <select id="Empresa" name="Empresa" class="form-control1" required></select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="AreaTrabajo" class="form-label">Área de Trabajo</label>
-                                        <input type="text" id="AreaTrabajo" name="AreaTrabajo" class="form-control1"
-                                            required>
+                                        <select id="AreaTrabajo" name="AreaTrabajo" class="form-control1"
+                                            required></select>
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <label for="Fechacontrato" class="form-label">Fecha de contrato</label>
+                                    <input type="date" name="Fechacontrato" id="Fechacontrato" class="form-control1"
+                                        required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Modificar</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                </div>
                             </div>
-                            <div class="col-12">
-                                <label for="Fechacontrato" class="form-label">Fecha de contrato</label>
-                                <input type="date" name="Fechacontrato" id="Fechacontrato" class="form-control1"
-                                    required>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Modificar</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 
 </html>

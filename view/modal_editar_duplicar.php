@@ -40,24 +40,27 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="EpsDuplicar" class="form-label">EPS</label>
-                                        <input type="text" id="EpsDuplicar" name="EpsDuplicar" placeholder="Eps"
-                                            class="form-control1" required>
+                                        <select id="EpsDuplicar" name="EpsDuplicar" class="form-control1" required>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="EmpresaDuplicar" class="form-label">Empresa</label>
-                                        <input type="text" id="EmpresaDuplicar" name="EmpresaDuplicar"
-                                            placeholder="Empresa" class="form-control1" required>
+                                        <select id="EmpresaDuplicar" name="EmpresaDuplicar" class="form-control1"
+                                            required>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="AreaTrabajoDuplicar" class="form-label">Área de Trabajo</label>
-                                        <input type="text" id="AreaTrabajoDuplicar" name="AreaTrabajoDuplicar"
-                                            placeholder="Area Trabajo" class="form-control1" required>
+                                        <select id="AreaTrabajoDuplicar" name="AreaTrabajoDuplicar"
+                                            class="form-control1" required>
+                                        </select>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="col-12">
                                 <label for="FechacontratoDuplicar" class="form-label">Fecha de contrato</label>
@@ -74,6 +77,5 @@
             </div>
         </div>
     </div>
-</body>
 
 </html>
