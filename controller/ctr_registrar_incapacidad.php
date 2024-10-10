@@ -22,7 +22,7 @@ $archivo = $_POST["Archivo"];
 $conexion = new Conexion();
 $conMysql = $conexion->conMysql();
 // --------------------------------------------------------
-$incapacidad = new UsuarioEIncapacidad ($conMysql);
+$incapacidad = new UsuarioEIncapacidad($conMysql);
 try {
     if (!$incapacidad->ExistPersona($cedula, $conMysql)) {
         $resultadoPersona = $incapacidad->AggPersona($cedula, $nombre, $eps, $empresa, $area, $fechaContrato);
@@ -30,7 +30,6 @@ try {
             $resultadoPersona->mostrarMensaje('success', 'Persona e incapacidad registrada');
         } else {
             $resultadoPersona->mostrarMensaje('error', 'El objeto no tiene el método mostrarMensaje');
-            
         }
     }
     // Una vez que la persona está registrada (o ya existía), intentar agregar la incapacidad
@@ -52,4 +51,3 @@ try {
 // $incapacidad->AggIncapacidad($cedula,$nombre,$eps, $empresa, $area, $fechaContrato, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $Totaldias, $observaciones, $archivo);
 
 // --------------------------------------------------------
- 
