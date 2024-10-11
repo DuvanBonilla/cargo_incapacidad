@@ -1,7 +1,3 @@
-<?php
-$persona = include '../model/consu_personas.php';
-?>
-
 <!DOCTYPE html>
 <html lang="es-MX">
 
