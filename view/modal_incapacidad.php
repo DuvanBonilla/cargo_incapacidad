@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-<script src="../controller/js/modal_incapacdidad.js"></script>
-<script src="../controller/js/calculardias_LP.js"></script>
+    <script src="../controller/js/calculardias_LP.js"></script>
+    <script src="../controller/js/modal_incapacdidad.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@ if ($result->num_rows > 0){
         $id = $fila["IdEps"];
         $rol = $fila["Descripcion"];
         ?>
-        <option value="<?php echo "$id;" ?>"> <?php echo "$rol"; ?></option>
+        <option value="<?php echo $id ?>"> <?php echo $rol ?></option>
         <?php
 
     }

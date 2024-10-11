@@ -36,24 +36,26 @@ if (isset($_FILES['archivo_excel']['tmp_name'])) {
             if ($resultado->num_rows > 0) {
                 // Si se encuentra coincidencia, obtener los datos
                 $fila = $resultado->fetch_assoc();
+                $fechacontrato = $fila['Fechacontrato'];
                 $ibc = $fila['Ibc'];
                 $codigoDiagnostico = $fila['Codigodiagnostico'];
                 $inicialProrroga = $fila['Inicialprorroga'];
                 $tipoIncapacidad = $fila['Tipoincapacidad'];
                 $fechaInicio = $fila['Fechainicio'];
                 $fechaFinal = $fila['Fechafinal'];
-                $diasBD = $fila['Dias'];
-                $observacion = $fila['Observaciones'];
+                $diasBD = $fila['Totaldias'];
+                $diascobrar = $fila ['Diascobrar'];
+                $valorpagado = $fila ['Valorpagado'];
+                $observaciones = $fila ['Observaciones'];
                 $archivo = $fila['Archivo'];
-
-                // Realizar los cálculos
-                $valorPagado = ($ibc / 30) * $diasBD; // Cálculo de valor pagado
-                $valorDevuelto = $valorPagado - $valorExcel; // Cálculo de valor devuelto
+            
+                $valorDevuelto =  $valorExcel;
+                $diasdevueltos = $diasExcel; 
 
                 // Insertar los datos en la tabla tbl_incapacidades_pagas
                 $sqlInsertar = "INSERT INTO tbl_incapacidades_pagas 
-                    (Cedula, ibc, Codigodiagnostico, Inicialprorroga, Tipoincapacidad, Fechainicio, Fechafinal, Dias, Valorpagado, Valordevuelto, archivo) 
-                    VALUES ('$cedula','$ibc', '$codigoDiagnostico','$inicialProrroga','$tipoIncapacidad','$fechaInicio', '$fechaFinal', '$diasBD','$valorPagado', '$valorDevuelto','$archivo')";
+                    (Cedula,Fechacontrato, ibc, Codigodiagnostico, Inicialprorroga, Tipoincapacidad, Fechainicio, Fechafinal, Totaldias, Diascobrar, Diasdevueltos, Valorpagado, Valordevuelto, Observaciones, archivo) 
+                    VALUES ('$cedula','$fechacontrato','$ibc', '$codigoDiagnostico','$inicialProrroga','$tipoIncapacidad','$fechaInicio', '$fechaFinal', '$diasBD','$diascobrar','$diasdevueltos','$valorpagado', '$valorDevuelto','$observaciones','$archivo')";
                 
                 if (!$conexion->query($sqlInsertar)) {
                     echo "Error al insertar en tbl_incapacidades_pagas: " . $conexion->error . "<br>";

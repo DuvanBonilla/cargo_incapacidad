@@ -1,4 +1,4 @@
-<?php include '../model/consu_inca_activas.php'?>
+<?php include '../model/consu_inca_inactivas.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,19 +18,22 @@
 </head>
 <body>
     <div class="iconretr"> <a href="index.php"><i class='bx bxs-chevrons-left'></i> </a></div>
+</div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
-            <h1>INCAPACIDADES ACTIVAS</h1>
+            <h1>INCAPACIDADES INACTIVAS</h1>
             <thead>
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
                     <th>Area T</th>
-                    <th>IBC</th>
+                    <th>Ibc</th>
                     <th>Tipo</th>
                     <th>Ini o Pro</th>
                     <th>Fecha Inicio</th>
-                    <th>Días</th>
+                    <th>T Días</th>
+                    <th>Días a Cobrar</th>
+                    <th>Días Devueltos</th>
                     <!-- <th>Incapacidad</th> -->
                 </tr>
             </thead>
@@ -46,11 +49,13 @@
                             <td><?= htmlspecialchars($persona['Inip']); ?></td>
                             <td><?= htmlspecialchars($persona['Fechainicio']); ?></td>
                             <td><?= htmlspecialchars($persona['Totaldias']); ?></td>
+                            <td><?= htmlspecialchars($persona['Diascobrar']); ?></td>
+                            <td><?= htmlspecialchars($persona['Diasdevueltos']); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <tr>
-                        <td colspan="9">No se encontraron registros</td>
+                        <td colspan="6">No se encontraron registros</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

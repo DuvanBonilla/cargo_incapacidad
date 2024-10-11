@@ -3,6 +3,20 @@ Verde: #a8ce3b
 Azul oscuro: #1c2256
 Azul clarito: #1997bd
 */
+
+.iconretr a {
+  text-decoration: none;
+  color: rgb(240, 58, 34); /* Ajusta el color que desees */
+  font-size: 60px; /* Tamaño del ícono */
+  position: initial; /* Cambia la posición si es necesario */
+  right: initial;
+  bottom: initial;
+}
+.iconretr {
+  position: absolute; 
+  top: 10px; 
+  left: 10px;
+}
 body {
   background-image: url(../css/images/IMG_0419.JPG);
   background-size: cover; /* La imagen cubrirá todo el fondo */
@@ -93,43 +107,7 @@ h1 {
   padding: 10px 10px;
   margin: 15px -10px;
 }
-/* .login > button {
-  font-family: "Asap", sans-serif;
-  cursor: pointer;
-  color: #fff;
-  font-size: 12px;
-  text-transform: uppercase;
-  width: 120px;
-  border: 0;
-  padding: 10px 0;
-  margin-top: 10px;
-  margin-left: -5px;
-  border-radius: 5px;
-  background-color: #2197be;
-  -webkit-transition: background-color 300ms;
-  -moz-transition: background-color 300ms;
-  transition: background-color 300ms;
-} */
-/* .login > button:hover {
-  background-color: #83f243;
-} */
 
-/* @-webkit-keyframes wawes {
-  from {
-    -webkit-transform: rotate(0);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-  }
-}
-@-moz-keyframes wawes {
-  from {
-    -moz-transform: rotate(0);
-  }
-  to {
-    -moz-transform: rotate(360deg);
-  }
-} */
 @keyframes wawes {
   from {
     -webkit-transform: rotate(0);

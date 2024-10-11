@@ -23,33 +23,13 @@ $conexion = new Conexion();
 $conMysql = $conexion->conMysql();
 // --------------------------------------------------------
 $incapacidad = new UsuarioEIncapacidad ($conMysql);
-try {
-    if (!$incapacidad->ExistPersona($cedula, $conMysql)) {
-        $resultadoPersona = $incapacidad->AggPersona($cedula, $nombre, $eps, $empresa, $area, $fechaContrato);
-        if (method_exists($resultadoPersona, 'mostrarMensaje')) {
-            $resultadoPersona->mostrarMensaje('success', 'Persona e incapacidad registrada');
-        } else {
-            $resultadoPersona->mostrarMensaje('error', 'El objeto no tiene el método mostrarMensaje');
-            
-        }
-    }
-    // Una vez que la persona está registrada (o ya existía), intentar agregar la incapacidad
-    $resultadoIncapacidad = $incapacidad->AggIncapacidad($cedula, $nombre, $eps, $empresa, $area, $fechaContrato, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $Totaldias, $observaciones, $archivo);
-    if ($resultadoIncapacidad) {
-        echo "Incapacidad registrada para la persona: $cedula";
-    } else {
-        throw new Exception('Error al almacenar los datos de incapacidad.');
-    }
-} catch (Exception $e) {
-    // Captura cualquier excepción y muestra el mensaje de error
-    $incapacidad->mostrarMensaje('error', $e->getMessage());
+// Si la persona NO existe, entonces primero la agregamos
+if (!$incapacidad->ExistPersona($cedula, $conexion)) {
+    $incapacidad->AggPersona($cedula, $nombre, $eps, $empresa, $area, $fechaContrato);
 }
-
-
-
-// $incapacidad->ExistPersona($cedula,$conMysql);
-// // $incapacidad->AggPersona($cedula, $nombre,$eps, $empresa, $area, $fechaContrato);
-// $incapacidad->AggIncapacidad($cedula,$nombre,$eps, $empresa, $area, $fechaContrato, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $Totaldias, $observaciones, $archivo);
-
-// --------------------------------------------------------
- 
+// Si la persona existe o se agregó correctamente, agregamos la incapacidad
+if ($incapacidad->AggIncapacidad($cedula, $nombre, $eps, $empresa, $area, $fechaContrato, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $Totaldias, $observaciones, $archivo)) {
+    echo "Incapacidad registrada con éxito.";
+} else {
+    echo "Error al registrar la incapacidad.";
+}

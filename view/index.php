@@ -33,7 +33,7 @@
                 <h3>Incapacidades Activas</h3>
             </div>
         </a>
-        <a href="">
+        <a href="inca_inactivas.php">
             <div class="box">
                 <img src="./css/images/pago2.png" alt="">
                 <h3>Incapacidades Inact</h3>
@@ -51,10 +51,10 @@
                 <h3>Realizar Cruce</h3>
             </div>
         </a>
-        <a href="">
+        <a href="register.php">
             <div class="box">
                 <img src="./css/images/user.png" alt="">
-                <h3>Registrar Usuario</h3>
+                <h3>Usuarios</h3>
             </div>
         </a>
 
@@ -72,7 +72,7 @@
  <!-- jQuery (si usas Bootstrap 4 o anterior) -->
  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     
 
 </body>

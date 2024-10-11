@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js"crossorigin="anonymous"></script>
     <title>Registro de usuarios</title>
     <link href="css/login.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
 <body>
+<div class="iconretr"> <a href="index.php"><i class='bx bxs-chevrons-left'></i> </a></div>
   <form class="login" id="login" action="../controller/ctr_register.php" method="POST">
     <h1>Registro de usuarios</h1>
     <input type="text" placeholder="Nombre" name="nombre">
@@ -27,7 +26,6 @@
     </span>
   </button>
   </form>
-  
 </body>
 </html>
 
