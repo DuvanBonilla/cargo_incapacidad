@@ -14,13 +14,15 @@ include_once '../model/consu_base_datos.php'
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/inca_activas.css">
     <!-- --- font awesome --- -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..."crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css" integrity="..."
+        crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Personal Registrado</title>
 </head>
 
 <body>
     <div class="iconretr"> <a href="index.php"><i class='bx bxs-chevrons-left'></i> </a></div>
+    </div>
     <div class="container" style="margin-top: 4%;padding: 5px">
         <table id="tablax" class="table table-striped table-bordered" style="width:100%">
             <h1>Personal Registrado</h1>
@@ -38,6 +40,7 @@ include_once '../model/consu_base_datos.php'
                 </tr>
             </thead>
             <tbody>
+                <tr>
                     <?php if (!empty($personas)): ?>
                         <?php foreach ($personas as $persona): ?>
                         <tr>
@@ -72,20 +75,25 @@ include_once '../model/consu_base_datos.php'
                         <td colspan="6">No se encontraron registros</td>
                     </tr>
                 <?php endif; ?>
+                </tr>
             </tbody>
         </table>
     </div>
     <?php include 'modal_editar_duplicar.php'; ?>
     <?php include 'modal_editar_persona.php'; ?>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <scrip src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></scrip t>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- colocar los datos de la persona en los inputs del modal editar persona -->
+
+
     <script src="../controller/js/duplicar_editar_persona.js"></script>
     <script src="../controller/js/inputs_editar_persona.js"></script>
-    <script src="../controller/js/orden_tablas.js"></script>
+
 </body>
 
 </html>
