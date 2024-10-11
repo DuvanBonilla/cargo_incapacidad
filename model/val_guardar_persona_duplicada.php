@@ -31,7 +31,6 @@ class Val_guardar_persona_duplicada
         if ($stmt->execute()) {
             $stmt->close();
             header("location:../view/base_datos.php");
-            return true;
         } else {
             echo "
             <script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>

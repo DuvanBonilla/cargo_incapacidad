@@ -44,12 +44,12 @@ include_once '../model/consu_base_datos.php'
                     <?php if (!empty($personas)): ?>
                         <?php foreach ($personas as $persona): ?>
                         <tr>
-                            <td><?= htmlspecialchars($persona['Cedula']); ?></td>
+                            <td><strong><?= htmlspecialchars($persona['Cedula']); ?></strong></td>
                             <td><?= htmlspecialchars($persona['Nombre']); ?></td>
                             <td><?= htmlspecialchars($persona['Eps']); ?></td>
                             <td><?= htmlspecialchars($persona['Empresa']); ?></td>
                             <td><?= htmlspecialchars($persona['Areatrabajo']); ?></td>
-                            <td><?= htmlspecialchars($persona['Fechacontrato']); ?></td>
+                            <td><strong><?= htmlspecialchars($persona['Fechacontrato']); ?></strong></td>
 
                             <td>
                                 <button type="button" class="btn btn-primary btn-edit" data-toggle="modal"
