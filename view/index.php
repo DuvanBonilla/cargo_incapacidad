@@ -51,7 +51,7 @@
                 <h3>Realizar Cruce</h3>
             </div>
         </a>
-        <a href="register.php">
+        <a href="usuarios.php">
             <div class="box">
                 <img src="./css/images/user.png" alt="">
                 <h3>Usuarios</h3>

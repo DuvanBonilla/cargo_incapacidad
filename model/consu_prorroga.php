@@ -13,7 +13,7 @@ if ($result->num_rows > 0){
         $id = (int)$fila["Idprorroga"];
         $descripcion = $fila["Descripcion"];
         ?>
-            <option value="<?php echo $id; ?>"> <?php echo $descripcion; ?></option>
+            <option value="<?php echo $id ?>"> <?php echo $descripcion ?></option>
         <?php
 
     }
