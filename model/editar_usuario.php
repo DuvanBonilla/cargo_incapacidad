@@ -3,14 +3,19 @@ class EditarUsuario
 {
     public function editarUsuario($Cedula, $Nombre, $Sucursal, $Usuario, $Contrasena, $conexion)
     {
-        // Consulta para actualizar el usuario
-        $sql = "UPDATE tbl_usuarios SET Nombre = ?, Sucursal = ?, Usuario = ?, Contrasena = ? WHERE Cedula = ?";
-        $stmt = $conexion->prepare($sql);
-        
-        // Asociar parámetros, considerando los tipos de datos
-        // Cedula es varchar(15), Nombre es varchar(50), Sucursal es int(11), Usuario es varchar(20)
-        $stmt->bind_param("sisss", $Nombre, $Sucursal, $Usuario, $Contrasena, $Cedula);
-        
+      
+        if ($Contrasena !== null) {
+            // Si se ha proporcionado una nueva contraseña, actualizamos todo
+            $sql = "UPDATE tbl_usuarios SET Nombre = ?, Sucursal = ?, Usuario = ?, Contrasena = ? WHERE Cedula = ?";
+            $stmt = $conexion->prepare($sql);
+            $stmt->bind_param("sisss", $Nombre, $Sucursal, $Usuario, $Contrasena, $Cedula);
+        } else {
+            // Si no se ha proporcionado una nueva contraseña, omitimos el campo Contrasena
+            $sql = "UPDATE tbl_usuarios SET Nombre = ?, Sucursal = ?, Usuario = ? WHERE Cedula = ?";
+            $stmt = $conexion->prepare($sql);
+            $stmt->bind_param("siss", $Nombre, $Sucursal, $Usuario, $Cedula);
+        }
+
         // Ejecutar la consulta y verificar el resultado
         if ($stmt->execute()) {
             echo "
