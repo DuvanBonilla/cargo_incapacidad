@@ -90,7 +90,7 @@ h1 {
 }
 .login::after {
   left: 95%;
-  bottom: -96%;
+  bottom: -125%;
   background-color: #a8ce3b;
   -webkit-animation: wawes 7s infinite;
   -moz-animation: wawes 7s infinite;

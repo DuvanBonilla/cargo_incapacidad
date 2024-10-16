@@ -29,7 +29,7 @@ if (!$incapacidad->ExistPersona($cedula, $conexion)) {
 }
 // Si la persona existe o se agregó correctamente, agregamos la incapacidad
 if ($incapacidad->AggIncapacidad($cedula, $nombre, $eps, $empresa, $area, $fechaContrato, $ibc, $diagnostico, $inipro, $tipoinc, $fechaInicio, $Totaldias, $observaciones, $archivo)) {
-    echo "Incapacidad registrada con éxito.";
+    echo "Incapacidad registrada con éxito....";
 } else {
     echo "Error al registrar la incapacidad.";
 }
